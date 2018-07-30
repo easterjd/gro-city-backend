@@ -1,0 +1,51 @@
+{
+  "name": "gro-city-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "knexfile.js",
+  "scripts": {
+    "dev-server": "nodemon src/app.js",
+    "lint": "eslint src/",
+    "lint-watch": "esw src/ -w",
+    "knex": "knex",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "dev": "run-all \"npm run dev-server\" \"npm run lint-watch\"",
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easterjd/gro-city-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easterjd/gro-city-backend/issues"
+  },
+  "homepage": "https://github.com/easterjd/gro-city-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "knex": "^0.15.2",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3",
+    "pluralize": "^7.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "eslint-watch": "^4.0.2",
+    "nodemon": "^1.18.3",
+    "run-all": "^1.0.1"
+  }
+}
