@@ -4,17 +4,6 @@ const plantsModel = require('./plants')
 function get (userId) {
   return db('boards')
     .where({ user_id: userId })
-    .then(boards => {
-      const ids = boards.map(({ id }) => id)
-      return plantsModel.get()
-        .whereIn('board_id', ids)
-        .then(plants => {
-          return boards.map(board => {
-            const filtered = plants.filter(plant => plant.board_id === board.id)
-            return { ...board, plants: filtered }
-          })
-        })
-    })
 }
 
 function find (id) {
