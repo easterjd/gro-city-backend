@@ -27,6 +27,13 @@ async function create (req, res, next) {
   }
 }
 
+async function patch (req, res, next) {
+  const id = req.params.id
+  const response = await model.patch(id, req.body)
+
+  res.json({ [resourceName]: response })
+}
+
 async function destroy (req, res, next) {
   const id = req.params.id
   const response = await model.destroy(id)
@@ -35,5 +42,5 @@ async function destroy (req, res, next) {
 }
 
 module.exports = {
-  index, create, destroy
+  index, create, patch, destroy
 }
