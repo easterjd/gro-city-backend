@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('boards', table => {
     table.increments();
     table.string('title').notNullable();
-    table.integer('user_id').references('users.id');
+    table.integer('user_id').references('users.id').onDelete('CASCADE');
     table.timestamps(true, true);
   });
 };
