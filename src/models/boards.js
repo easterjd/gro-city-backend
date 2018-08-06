@@ -28,7 +28,19 @@ function create (body) {
     .then(([response]) => response)
 }
 
-// PATCH ROUTE for UPDATES
+function patch (id, body) {
+  return find(id).then(response => {
+    return db('plants')
+      .update({
+        ...response,
+        ...body,
+        updated_at: new Date()
+      })
+      .where({ id })
+      .returning('*')
+      .then(([response]) => response)
+  })
+}
 
 function destroy (id) {
   return db('boards')
@@ -39,5 +51,5 @@ function destroy (id) {
 }
 
 module.exports = {
-  get, find, create, destroy
+  get, find, create, patch, destroy
 }
