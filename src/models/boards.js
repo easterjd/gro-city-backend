@@ -7,12 +7,17 @@ function get (userId) {
 }
 
 function getPlants (userId, boardId) {
+  const board_id = parseInt(boardId)
+  console.log(userId, boardId)
   return db('plants_boards')
-    .where({ board_id: boardId })
+    .where({ board_id })
     .then(async plants => {
+      console.log(plants)
       const plantsInfo = await Promise.all(plants.map(plantId => {
+        console.log(plantId.plant_id)
         return plantsModel.find(plantId.plant_id)
       }))
+      return plantsInfo
     })
 }
 
@@ -50,5 +55,5 @@ function destroy (id) {
 }
 
 module.exports = {
-  get, find, create, patch, destroy
+  get, find, create, patch, destroy, getPlants
 }

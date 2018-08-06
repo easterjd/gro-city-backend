@@ -17,7 +17,7 @@ async function plants (req, res, next) {
   const boardId = req.params.id
 
   const response = await model.getPlants(userId, boardId)
-  res.json({ [ plants ]: response})
+  res.json({response})
 }
 
 async function create (req, res, next) {
