@@ -28,6 +28,20 @@ function create (body) {
     .then(([response]) => response)
 }
 
+function patch (id, body) {
+  return find(id).then(response => {
+    return db('plants')
+      .update({
+        ...response,
+        ...body,
+        updated_at: new Date()
+      })
+      .where({ id })
+      .returning('*')
+      .then(([response]) => response)
+  })
+}
+
 function destroy (id) {
   return db('boards')
     .where({ id })
@@ -37,5 +51,5 @@ function destroy (id) {
 }
 
 module.exports = {
-  get, find, create, destroy
+  get, find, create, patch, destroy
 }
