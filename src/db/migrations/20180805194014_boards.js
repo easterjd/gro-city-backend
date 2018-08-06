@@ -3,7 +3,6 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('title').notNullable();
     table.integer('user_id').references('users.id');
-    table.integer('plant_id').references('plants.id');
     table.timestamps(true, true);
   });
 };
