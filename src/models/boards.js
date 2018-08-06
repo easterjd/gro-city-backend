@@ -17,6 +17,16 @@ function get (userId) {
     })
 }
 
+function getPlants (userId, boardId) {
+  return db('plants_boards')
+    .where({ board_id: boardId })
+    .then(async plants => {
+      const plantsInfo = await Promise.all(plants.map(plantId => {
+        return plantsModel.find(plantId.plant_id)
+      }))
+    })
+}
+
 function find (id) {
   return db('boards').where({ id }).first()
 }
