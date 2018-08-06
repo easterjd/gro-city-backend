@@ -34,7 +34,7 @@ function create (body) {
 
 function patch (id, body) {
   return find(id).then(response => {
-    return db('plants')
+    return db('boards')
       .update({
         ...response,
         ...body,
