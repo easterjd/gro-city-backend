@@ -53,5 +53,5 @@ async function destroy (req, res, next) {
 }
 
 module.exports = {
-  create, patch, destroy
+  getAll, getOne, create, patch, destroy
 }
