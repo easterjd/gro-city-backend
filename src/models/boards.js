@@ -28,6 +28,8 @@ function create (body) {
     .then(([response]) => response)
 }
 
+// PATCH ROUTE for UPDATES
+
 function destroy (id) {
   return db('boards')
     .where({ id })
