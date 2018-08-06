@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('plants').del()
     .then(function () {
-      const plantJSON = JSON.parse(fs.readFileSync('../usdaFiltered.json', 'utf-8'))
+      const plantJSON = JSON.parse(fs.readFileSync('./src/db/usdaFiltered.json', 'utf-8'))
       const plantSeed = plantJSON.map(plant => {
         return {
           scientific_name: plant["Scientific Name"],
