@@ -11,6 +11,15 @@ async function index (req, res, next) {
   res.json({ [ plural(resourceName) ]: response })
 }
 
+async function plants (req, res, next) {
+  const token = parseToken(req.headers.authorization)
+  const userId = token.sub.id
+  const boardId = req.params.id
+
+  const response = await model.getPlants(userId, boardId)
+  res.json({ [ plants ]: response})
+}
+
 async function create (req, res, next) {
   try {
     const token = parseToken(req.headers.authorization)
@@ -42,5 +51,5 @@ async function destroy (req, res, next) {
 }
 
 module.exports = {
-  index, create, patch, destroy
+  index, create, patch, destroy, plants
 }

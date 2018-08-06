@@ -5,4 +5,4 @@ exports.seed = async knex => {
   await knex('plants').del()
   await knex('boards').del()
   await knex('users').del()
-};
+}
