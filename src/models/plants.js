@@ -4,6 +4,10 @@ function get () {
   return db('plants')
 }
 
+function find (id) {
+  return db('plants').where({id}).first()
+}
+
 function getPage (page, body) {
   return db('plants')
   .where(body)
@@ -41,5 +45,5 @@ function destroy (id) {
 }
 
 module.exports = {
-  get, getPage, create, patch, destroy
+  get, find, getPage, create, patch, destroy
 }
