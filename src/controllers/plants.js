@@ -13,10 +13,16 @@ async function getAll (req, res, next) {
   }
 }
 
-async function getOne (req, res, next) {
+async function getPage (req, res, next) {
   try {
-    const id = req.params.id
-    const response = await model.find(id)
+    const page = req.params.page
+    const body = req.body
+    let activeSearch = {}
+    for (let key in body.data) {
+      const filterValue = body.data[key]
+      if (filterValue !== "") activeSearch[key] = filterValue
+    }
+    const response = await model.getPage(page, activeSearch)
     res.status(200).json({response})
   } catch (e) {
     next({
@@ -53,5 +59,5 @@ async function destroy (req, res, next) {
 }
 
 module.exports = {
-  getAll, getOne, create, patch, destroy
+  getAll, getPage, create, patch, destroy
 }
