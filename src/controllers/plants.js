@@ -17,17 +17,20 @@ async function getPage (req, res, next) {
   try {
     const page = req.params.page
     const body = req.body
-    let activeSearch = {}
-    for (let key in body.data) {
-      const filterValue = body.data[key]
-      if (filterValue !== "") activeSearch[key] = filterValue
-    }
-    const response = await model.getPage(page, activeSearch)
+    // let activeSearch = {data:{}}
+    // if (body.scientific_name !== "") {
+    //   activeSearch.scientific_name = body.scientific_name
+    // }
+    // for (let key in body.data) {
+    //   const filterValue = body.data[key]
+    //   if (filterValue !== "") activeSearch.data[key] = filterValue
+    // }
+    const response = await model.getPage(page, body)
     res.status(200).json({response})
   } catch (e) {
     next({
       status: 404,
-      error: `Plant Id not found`
+      error: `No plants not found`
     })
   }
 }
