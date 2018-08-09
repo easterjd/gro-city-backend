@@ -10,9 +10,9 @@ function find (id) {
 
 function getPage (page, body) {
   return db('plants')
-  .where(body)
-  .limit(12)
-  .offset((page - 1) * 12)
+    .where(body)
+    .limit(12)
+    .offset((page - 1) * 12)
 }
 
 function create (body) {

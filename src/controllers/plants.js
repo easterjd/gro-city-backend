@@ -20,7 +20,7 @@ async function getPage (req, res, next) {
     let activeSearch = {}
     for (let key in body.data) {
       const filterValue = body.data[key]
-      if (filterValue !== "") activeSearch[key] = filterValue
+      if (filterValue !== '') activeSearch[key] = filterValue
     }
     const response = await model.getPage(page, activeSearch)
     res.status(200).json({response})
