@@ -10,7 +10,7 @@ function find (id) {
 
 function getPage (page, body) {
   // const query = body.scientific_name === undefined ? {data = body} : {scientific_name: body.scientific_name}
-  console.log(body)
+  // console.log(body)
   // if (body.scientific_name && Object.keys(body.data).length > 0) {
   //   console.log('one')
   //   return db('plants')
@@ -102,6 +102,14 @@ function destroy (id) {
     .del()
     .returning('*')
     .then(([response]) => response)
+}
+
+function parseNegInt(string) {
+  if (string[0] === '-') {
+    return -parseInt(string.slice(1))
+  } else {
+    return parseInt(string)
+  }
 }
 
 module.exports = {
