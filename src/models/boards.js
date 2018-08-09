@@ -59,5 +59,5 @@ function addPlants(body) {
 }
 
 module.exports = {
-  get, find, create, patch, destroy, getPlants
+  get, find, create, patch, destroy, getPlants, addPlants
 }
