@@ -18,6 +18,14 @@ function getPlants (userId, boardId) {
     })
 }
 
+function removePlant(boardId, plantId){
+  return db('plants_boards')
+    .where({ plant_id: plantId, board_id: boardId})
+    .del()
+    .returning('*')
+    .then(([response]) => response)
+}
+
 function find (id) {
   return db('boards').where({ id }).first()
 }
@@ -52,5 +60,5 @@ function destroy (id) {
 }
 
 module.exports = {
-  get, find, create, patch, destroy, getPlants
+  get, find, create, patch, destroy, getPlants, removePlant
 }

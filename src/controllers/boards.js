@@ -20,6 +20,14 @@ async function plants (req, res, next) {
   res.json({response})
 }
 
+async function removePlant(req, res, next){
+  const boardId = req.params.id;
+  const plantId = req.params.plantId;
+
+  const response = await model.removePlant(boardId, plantId)
+  res.json({response})
+}
+
 async function create (req, res, next) {
   try {
     const token = parseToken(req.headers.authorization)
@@ -51,5 +59,5 @@ async function destroy (req, res, next) {
 }
 
 module.exports = {
-  index, create, patch, destroy, plants
+  index, create, patch, destroy, plants, removePlant
 }
