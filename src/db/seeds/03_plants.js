@@ -8,6 +8,7 @@ exports.seed = function (knex, Promise) {
       const plantSeed = plantJSON.map(plant => {
         return {
           scientific_name: plant['Scientific Name'],
+          imageUrl: plant['imageUrl'],
           data: {
             symbol: plant['Accepted Symbol'],
             synSymbol: plant['Synonym Symbol'],
