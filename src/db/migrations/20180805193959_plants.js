@@ -2,6 +2,7 @@ exports.up = function (knex, Promise) {
   return knex.schema.createTable('plants', table => {
     table.increments()
     table.text('scientific_name').notNullable().defaultsTo('')
+    table.text('imageUrl').notNullable().defaultsTo('')
     table.json('data').notNullable()
     table.timestamps(true, true)
   })
