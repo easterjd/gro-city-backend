@@ -50,6 +50,15 @@ async function destroy (req, res, next) {
   res.json({ [resourceName]: response })
 }
 
+async function addPlant (req, res, next) {
+  const plant_id = req.params.plant_id
+  const board_id = req.params.id
+  const response = await model.addPlant({plant_id, board_id})
+
+  res.json({ [resourceName]: response })
+}
+
+
 module.exports = {
   index, create, patch, destroy, plants
 }

@@ -51,6 +51,13 @@ function destroy (id) {
     .then(([response]) => response)
 }
 
+function addPlants(body) {
+  return db('plants_boards')
+    .insert(body)
+    .returning('*')
+    .then(([response]) => response)
+}
+
 module.exports = {
   get, find, create, patch, destroy, getPlants
 }
