@@ -9,38 +9,10 @@ function find (id) {
 }
 
 function getPage (page, body) {
-  // const query = body.scientific_name === undefined ? {data = body} : {scientific_name: body.scientific_name}
-  // console.log(body)
-  // if (body.scientific_name && Object.keys(body.data).length > 0) {
-  //   console.log('one')
-  //   return db('plants')
-  //   .where('scientific_name', 'ILIKE', body.scientific_name)
-  //   .andWhere('data', '@>', body.data)
-  //   // .limit(12)
-  //   // .offset((page - 1) * 12)
-  // } else if (!body.scientific_name && Object.keys(body.data).length > 0) {
-  //   console.log('two')
-  //   return db('plants')
-  //   .whereRaw('data = ?', Object.keys(body.data).map(ele => `${ele}: ${body.data[ele]}`))
-  //   // .limit(12)
-  //   // .offset((page - 1) * 12)
-  // } else if (body.scientific_name && Object.keys(body.data).length === 0) {
-  //   console.log('three')
-  //   return db('plants')
-  //   .where('scientific_name', 'ILIKE', body.scientific_name)
-  //   // .limit(12)
-  //   // .offset((page - 1) * 12)
-  // } else {
-  //   return db('plants')
-  //   .limit(12)
-  //   .offset((page - 1) * 12)
-  // }
   return db('plants')
   .then(response => {
-    // console.log('hi')
     const filterPlants = response.filter(plant => {
       if (body['scientific_name'] !== "") {
-        // console.log(plant['scientific_name'].includes(body['scientific_name']))
         if (!plant['scientific_name'].includes(body['scientific_name'])) return false
       }
       if (body.data['habit'] !== "") {
@@ -64,7 +36,6 @@ function getPage (page, body) {
       return true
     })
     const pageAmount = Math.ceil(filterPlants.length / 12)
-    // console.log(filterPlants.length, pageAmount)
     return {filterPlants, pageAmount}
   })
   .then(({filterPlants, pageAmount}) => {
