@@ -1,4 +1,4 @@
-// NOT FUNCTIONAL
+// NOT FUNCTIONING
 exports.seed = async knex => {
   // Deletes ALL existing entries
   await knex('plants_boards').del()
