@@ -4,17 +4,26 @@ const plantsModel = require('./plants')
 function get (userId) {
   return db('boards')
     .where({ user_id: userId })
-    .then(boards => {
-      const ids = boards.map(({ id }) => id)
-      return plantsModel.get()
-        .whereIn('board_id', ids)
-        .then(plants => {
-          return boards.map(board => {
-            const filtered = plants.filter(plant => plant.board_id === board.id)
-            return { ...board, plants: filtered }
-          })
-        })
+}
+
+function getPlants (userId, boardId) {
+  const board_id = parseInt(boardId)
+  return db('plants_boards')
+    .where({ board_id })
+    .then(async plants => {
+      const plantsInfo = await Promise.all(plants.map(plantId => {
+        return plantsModel.find(plantId.plant_id)
+      }))
+      return plantsInfo
     })
+}
+
+function removePlant(boardId, plantId){
+  return db('plants_boards')
+    .where({ plant_id: plantId, board_id: boardId})
+    .del()
+    .returning('*')
+    .then(([response]) => response)
 }
 
 function find (id) {
@@ -30,7 +39,7 @@ function create (body) {
 
 function patch (id, body) {
   return find(id).then(response => {
-    return db('plants')
+    return db('boards')
       .update({
         ...response,
         ...body,
@@ -50,6 +59,13 @@ function destroy (id) {
     .then(([response]) => response)
 }
 
+function addPlants(body) {
+  return db('plants_boards')
+    .insert(body)
+    .returning('*')
+    .then(([response]) => response)
+}
+
 module.exports = {
-  get, find, create, patch, destroy
+  get, find, create, patch, destroy, getPlants, removePlant, addPlants
 }

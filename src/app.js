@@ -12,7 +12,7 @@ app.use(require('cors')())
 
 app.use('/api/users', require('./routes/users'))
 app.use('/api/boards', require('./routes/boards'))
-app.use('/api/boards/:boardId/plants', require('./routes/plants'))
+app.use('/api/plants', require('./routes/plants'))
 
 app.use((req, res, next) => {
   const status = 404
