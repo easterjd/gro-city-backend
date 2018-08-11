@@ -1,4 +1,5 @@
-[{
+[
+  {
   "Accepted Symbol": "ABGR4",
   "Synonym Symbol": "",
   "Scientific Name": "Abelia ×grandiflora",
@@ -20,7 +21,9 @@
   "Bloom Period": "Late Summer",
   "Commercial Availablity": "Routinely Available",
   "imageUrl": "https://tse1.mm.bing.net/th?id=OIP.AeYrvjvQmip3UV7j0dFYBgHaE7&pid=Api"
-}, {
+},
+
+{
   "Accepted Symbol": "ABAM",
   "Synonym Symbol": "",
   "Scientific Name": "Abies amabilis",
