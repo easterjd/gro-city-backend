@@ -12,25 +12,23 @@
 
 ### ERD
 
-  ![erd](./src/db/db/gro_city_ERD.png)
+  ![erd](./src/db/gro_city_ERD.png)
 
 ### Routes
 
-  - Header - Authorization is sent as `Bearer` token
+  - Header
+    - Authorization is sent as `Bearer` token
+    - Content-Type: application/json
 
-| Purpose | Request Type | Route | body | Authorization |
-| --- | --- | --- | --- | --- |
-| user login | post | https://gro-city-backend.herokuapp.com/api/users/signup |
-| user signup | post | Show file differences that haven't been staged |
 
-### user routes
+##### User routes
 
 | Purpose | Request Type | Route | body | Authorization |
 | --- | --- | --- | --- | --- |
 | user signup | `post` | https://gro-city-backend.herokuapp.com/api/users/signup |  {first_name, last_name, email, password} | - |
 | user login | `post` | https://gro-city-backend.herokuapp.com/api/users/login  | {email, password} | required |
 
-##### board routes
+##### Board routes
 
 | Purpose | Request Type | Route | body | Authorization |
 | --- | --- | --- | --- | --- |
@@ -42,16 +40,16 @@
 | create one plant for a board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
 | delete one plant from a board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
 
-##### plant routes
+##### Plant routes
 
 | Purpose | Request Type | Route | body | Authorization |
 | --- | --- | --- | --- | --- |
 | get all plants | `get` | https://gro-city-backend.herokuapp.com/api/plants/ | - | required |
 | get all plants in a page | `get` | https://gro-city-backend.herokuapp.com/api/plants/:page | - | required |
 
-## plant data
+## Plant data
 
-  ![each plant data](./src/db/db/each_plant_data.png)
+  ![Individual plant data](./src/db/each_plant_data.png)
 
 ## Installation
 
