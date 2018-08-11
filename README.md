@@ -1,48 +1,56 @@
 # gro-city-backend
 
-## Description
-  gro_city_backend is intended for accessing of plant data, board_data for gro_city users. DB have 4 tables. Here the users are allowed to signup and login and create boards for keeping the information about their plants. Logged in users can search for plants from 1400 plants.
+## About
+  - gro_city_backend is intended for accessing of plant data, board_data for gro_city users.
+
+### Description
+  - DB have 4 tables.
+  - Here the users are allowed to signup and login
+  - Create, Read, Update, Delete boards which keeps the information about plants in them.
+  - Search for plants
+  - Add plants to boards
 
 ### ERD
 
   ![erd](./src/db/db/gro_city_ERD.png)
 
-## Routes
-  - Authorization is sent as Bearer token
+### Routes
 
-##### user routes
-  signup `post` request https://gro-city-backend.herokuapp.com/api/users/signup
-    - requires first_name, last_name, email, password as body of request  
-  login `post` request https://gro-city-backend.herokuapp.com/api/users/login
-    - requires email, password as body of request
-    - requires Authorization token
+  - Header - Authorization is sent as `Bearer` token
+
+| Purpose | Request Type | Route | body | Authorization |
+| --- | --- | --- | --- | --- |
+| user login | post | https://gro-city-backend.herokuapp.com/api/users/signup |
+| user signup | post | Show file differences that haven't been staged |
+
+### user routes
+
+| Purpose | Request Type | Route | body | Authorization |
+| --- | --- | --- | --- | --- |
+| user signup | `post` | https://gro-city-backend.herokuapp.com/api/users/signup |  {first_name, last_name, email, password} | - |
+| user login | `post` | https://gro-city-backend.herokuapp.com/api/users/login  | {email, password} | required |
 
 ##### board routes
-  get all boards https://gro-city-backend.herokuapp.com/api/boards/
-  - requires Authorization token
-  get one board  https://gro-city-backend.herokuapp.com/api/boards/:id
-  - requires Authorization token
-  create board   https://gro-city-backend.herokuapp.com/api/boards/
-  - requires title as body
-  - requires Authorization token
-  update board   https://gro-city-backend.herokuapp.com/api/boards/:id
-  - requires title as body
-  - requires Authorization token
-  delete board   https://gro-city-backend.herokuapp.com/api/boards/:id
-  - requires Authorization token
-  delete plant from a board   https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id
-  - requires Authorization token
-  create plant for a board
-  https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id
-  - requires Authorization token
+
+| Purpose | Request Type | Route | body | Authorization |
+| --- | --- | --- | --- | --- |
+| get all boards | `get` | https://gro-city-backend.herokuapp.com/api/boards/ | - | required |
+| get one board | `get` | https://gro-city-backend.herokuapp.com/api/boards/:id | - | required |
+| create one board | `post` | https://gro-city-backend.herokuapp.com/api/boards/ | {title} | required |
+| update one board | `patch` | https://gro-city-backend.herokuapp.com/api/boards/:id | {title} | required |
+| delete one board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id | - | required |
+| create one plant for a board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
+| delete one plant from a board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
 
 ##### plant routes
-  get all plants https://gro-city-backend.herokuapp.com/api/plants/
-  - requires Authorization token
-  get plants in a page https://gro-city-backend.herokuapp.com/api/plants/:page
-  - requires Authorization token
+
+| Purpose | Request Type | Route | body | Authorization |
+| --- | --- | --- | --- | --- |
+| get all plants | `get` | https://gro-city-backend.herokuapp.com/api/plants/ | - | required |
+| get all plants in a page | `get` | https://gro-city-backend.herokuapp.com/api/plants/:page | - | required |
 
 ## plant data
+
   ![each plant data](./src/db/db/each_plant_data.png)
 
 ## Installation
