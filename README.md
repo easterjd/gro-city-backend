@@ -1,10 +1,10 @@
 # gro-city-backend
 
 ## About
-  - gro_city_backend is intended for accessing of plant data, board_data for gro_city users.
+  - gro_city_backend is intended for accessing plant data, board_data for gro_city users.
 
 ### Description
-  - DB have 4 tables.
+  - DB has 4 tables.
   - Here the users are allowed to signup and login
   - Create, Read, Update, Delete boards which keeps the information about plants in them.
   - Search for plants
@@ -37,7 +37,7 @@
 | create one board | `post` | https://gro-city-backend.herokuapp.com/api/boards/ | {title} | required |
 | update one board | `patch` | https://gro-city-backend.herokuapp.com/api/boards/:id | {title} | required |
 | delete one board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id | - | required |
-| create one plant for a board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
+| create one plant for a board | `post` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
 | delete one plant from a board | `delete` | https://gro-city-backend.herokuapp.com/api/boards/:id/plants/:plant_id | - | required |
 
 ##### Plant routes
