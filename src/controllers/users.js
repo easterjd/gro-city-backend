@@ -23,6 +23,15 @@ async function login (req, res, next) {
   }
 }
 
+async function verify (req, res, next) {
+  try {
+    await auth.parseToken(req.headers.authorization)
+    res.json({ isLoggedIn: true })
+  } catch (e) {
+    next({ status: 401, error: 'Login has expired, please sign in again.'})
+  }
+}
+
 module.exports = {
-  signup, login
+  signup, login, verify
 }
